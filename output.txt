@@ -1,0 +1,39 @@
+CAMPUS LIBRARY MANAGER
+
+1. Abstract parent
+Cannot create LibraryItem directly: late_fee() is abstract (TypeError).
+
+2. Item descriptions and polymorphic fees
+Book: Python 101 by A. Rao (ID 1) -> late fee for 3 days: Rs 6
+Magazine: Campus Science, issue 12 (ID 2) -> late fee for 3 days: Rs 3
+DVD: Learning Python, 90 minutes (ID 3) -> late fee for 3 days: Rs 15
+Total items created: 3
+Alice's default limit: 3
+Bob's custom limit: 1
+
+3. Borrowing and invalid actions
+Alice borrowed: Python 101
+Could not borrow: 'Python 101' is already borrowed.
+Could not borrow: 'Python 101' is already borrowed.
+Bob borrowed: Learning Python
+Could not borrow: Bob has reached the borrow limit of 1 item(s).
+Alice borrowed: Campus Science
+Alice's borrowed titles: ['Python 101', 'Campus Science']
+Bob's borrowed titles: ['Learning Python']
+Could not return: Bob has not borrowed 'Python 101'.
+
+4. Encapsulation
+Direct book.__available access raises AttributeError.
+Book available via is_available(): False
+Clearing the returned title list leaves Alice's loans unchanged: ['Python 101', 'Campus Science']
+
+5. Returns and input validation
+Could not return: Days late must be a non-negative whole number.
+Book still borrowed after invalid days: True
+Alice returned Python 101 (3 days late); fee: Rs 6
+Alice returned Campus Science (0 days late); fee: Rs 0
+Bob returned Learning Python (3 days late); fee: Rs 15
+Could not return again: Alice has not borrowed 'Python 101'.
+All items available: True
+Alice's borrowed titles: []
+Bob's borrowed titles: []
